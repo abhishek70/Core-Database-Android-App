@@ -30,6 +30,7 @@ public class ContactListActivity extends Activity implements SwipeRefreshLayout.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
+        // SwipeRefresh functionality implemented
         SwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.SwipeRefresh);
         SwipeRefresh.setOnRefreshListener(this);
         SwipeRefresh.setColorScheme(android.R.color.holo_blue_bright,
@@ -74,6 +75,7 @@ public class ContactListActivity extends Activity implements SwipeRefreshLayout.
         return super.onOptionsItemSelected(item);
     }
 
+    // Function for fetching the data from the database
     public void fetchDataFromDatabase() {
         contactList.clear();
         ArrayList<Contact> data = db.GetContacts();
@@ -96,12 +98,14 @@ public class ContactListActivity extends Activity implements SwipeRefreshLayout.
         }
         db.close();
 
+        // Customize Contact Adapter for displaying each row in the ListView
         contactAdapter = new ContactAdapter(this,R.layout.activity_contact_list_row,contactList);
         contactListView.setAdapter(contactAdapter);
         contactAdapter.notifyDataSetChanged();
 
     }
 
+    // Refresh Handler
     @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {

@@ -77,6 +77,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         holder.phone.setText(rowItem.getPhone());
         holder.email.setText(rowItem.getEmail());
 
+        // Code executed when the user click on the Edit Button
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,10 +88,12 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             }
         });
 
+        // Code executed when the user click on the Delete Button
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                // Displaying the Alert Dialog box
                 final AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
                 builder.setTitle("Delete Contact");

@@ -30,6 +30,7 @@ public class ContactActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        // Initialize the database handler to create the database
         db = new DatabaseHandler(this);
         addLinearLayout = (LinearLayout) findViewById(R.id.updateView);
         editLinearLayout = (LinearLayout) findViewById(R.id.addView);
@@ -90,12 +91,14 @@ public class ContactActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Resetting all the fields
     public void resetField(View view) {
         addName.setText("");
         addMobile.setText("");
         addEmail.setText("");
     }
 
+    // Function for adding contact data
     public void addContactData() {
         if(isValidName()) {
 
@@ -113,6 +116,7 @@ public class ContactActivity extends Activity {
         }
     }
 
+    // Function for updating the contact data
     public void saveContactData() {
         if(isValidName()) {
 
@@ -130,6 +134,7 @@ public class ContactActivity extends Activity {
         }
     }
 
+    // Function for validation of the fields
     public boolean isValidName() {
         boolean success = false;
         String name = addName.getText().toString();
